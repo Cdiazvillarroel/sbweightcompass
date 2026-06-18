@@ -10,7 +10,7 @@ export function BookConsult() {
   useEffect(() => {
     (async () => {
       const cal = await getCalApi();
-      cal("ui", { theme: "light", hideEventTypeDetails: false, layout: "month_view" });
+      cal("ui", { theme: "light" });
     })();
   }, []);
 
