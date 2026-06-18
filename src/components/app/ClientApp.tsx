@@ -22,8 +22,8 @@ export type AppData = {
 type Seg = "inicio" | "cuerpo" | "nutricion" | "movimiento" | "coach" | "perfil";
 
 const L = (es: boolean) => ({
-  es: es, sub: "App del cliente", signout: "Cerrar sesión",
-  nav: { inicio: "Inicio", cuerpo: "Mi cuerpo", nutricion: "Nutrición", movimiento: "Movimiento", coach: "Mi coach", perfil: "Perfil" } as Record<Seg, string>,
+  es: es, sub: es ? "App del cliente" : "Client app", signout: es ? "Cerrar sesión" : "Sign out",
+  nav: { inicio: es ? "Inicio" : "Home", cuerpo: es ? "Mi cuerpo" : "My body", nutricion: es ? "Nutrición" : "Nutrition", movimiento: es ? "Movimiento" : "Movement", coach: es ? "Mi coach" : "My coach", perfil: es ? "Perfil" : "Profile" } as Record<Seg, string>,
   metaSub: { inicio: es ? "Tu resumen de hoy" : "Your day at a glance", cuerpo: es ? "Peso, medidas y hábitos" : "Weight, measurements & habits", nutricion: es ? "Plan, registro y recetas" : "Plan, logging & recipes", movimiento: es ? "Pasos, entrenos y biblioteca" : "Steps, workouts & library", coach: es ? "Agenda, minutas y plan" : "Agenda, notes & plan", perfil: es ? "Cuenta, membresía e idioma" : "Account, membership & language" } as Record<Seg, string>,
   checkin: es ? "Check-in semanal" : "Weekly check-in", premium: "Premium", save: es ? "Guardar" : "Save", saving: es ? "Guardando…" : "Saving…", saved: es ? "Guardado ✓" : "Saved ✓", err: es ? "No se pudo guardar." : "Couldn't save.",
 });
