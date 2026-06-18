@@ -6,11 +6,7 @@
     "languageName": "English",
     "switchTo": "Español"
   },
-  "nav": {
-    "how": "How it works",
-    "approach": "Approach",
-    "consult": "Free consult"
-  },
+  "nav": { "how": "How it works", "approach": "Approach", "consult": "Free consult" },
   "hero": {
     "eyebrow": "Weight & lifestyle coaching · Australia · EN/ES",
     "title": "Steady guidance toward your goal — not another crash diet",
@@ -31,12 +27,21 @@
     "title": "Coaching, not clinical care",
     "body": "This is lifestyle and weight coaching, not medical treatment. If anything in your health needs a doctor, we'll tell you and help you get the right care first."
   },
+  "consult": {
+    "title": "Book your free initial consult",
+    "subtitle": "Leave your details and pick a time that suits you. No pressure, no commitment.",
+    "bookDirect": "Or pick a time directly",
+    "form": {
+      "name": "Your name",
+      "email": "Email",
+      "submit": "Request my consult",
+      "submitting": "Sending…",
+      "success": "Thanks! We've got your details — pick a time on the calendar.",
+      "error": "Something went wrong. Please check your email and try again."
+    }
+  },
   "disclaimer": {
     "text": "SB My Weight Compass provides non-clinical lifestyle and weight coaching. It is not medical advice, diagnosis or treatment. Always consult your GP or a qualified health professional about your individual circumstances."
   },
-  "footer": {
-    "rights": "All rights reserved.",
-    "privacy": "Privacy",
-    "terms": "Terms"
-  }
+  "footer": { "rights": "All rights reserved.", "privacy": "Privacy", "terms": "Terms" }
 }

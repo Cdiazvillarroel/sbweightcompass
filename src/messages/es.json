@@ -6,11 +6,7 @@
     "languageName": "Español",
     "switchTo": "English"
   },
-  "nav": {
-    "how": "Cómo funciona",
-    "approach": "Enfoque",
-    "consult": "Consulta gratis"
-  },
+  "nav": { "how": "Cómo funciona", "approach": "Enfoque", "consult": "Consulta gratis" },
   "hero": {
     "eyebrow": "Coaching de peso y estilo de vida · Australia · EN/ES",
     "title": "Acompañamiento constante hacia tu meta — no otra dieta extrema",
@@ -31,12 +27,21 @@
     "title": "Coaching, no atención clínica",
     "body": "Esto es coaching de estilo de vida y peso, no tratamiento médico. Si algo en tu salud requiere un médico, te lo diremos y te ayudaremos a buscar la atención adecuada primero."
   },
+  "consult": {
+    "title": "Agenda tu consulta inicial gratuita",
+    "subtitle": "Déjanos tus datos y elige un horario que te acomode. Sin presión ni compromiso.",
+    "bookDirect": "O elige un horario directamente",
+    "form": {
+      "name": "Tu nombre",
+      "email": "Correo",
+      "submit": "Solicitar mi consulta",
+      "submitting": "Enviando…",
+      "success": "¡Gracias! Recibimos tus datos — elige un horario en el calendario.",
+      "error": "Algo salió mal. Revisa tu correo e inténtalo de nuevo."
+    }
+  },
   "disclaimer": {
     "text": "SB My Weight Compass ofrece coaching de estilo de vida y peso de carácter no clínico. No es consejo médico, diagnóstico ni tratamiento. Consulta siempre a tu médico (GP) o a un profesional de salud calificado sobre tu situación individual."
   },
-  "footer": {
-    "rights": "Todos los derechos reservados.",
-    "privacy": "Privacidad",
-    "terms": "Términos"
-  }
+  "footer": { "rights": "Todos los derechos reservados.", "privacy": "Privacidad", "terms": "Términos" }
 }

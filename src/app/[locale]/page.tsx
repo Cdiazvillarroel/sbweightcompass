@@ -1,6 +1,8 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { CompassMark } from "@/components/CompassMark";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
+import { LeadForm } from "@/components/LeadForm";
+import { BookConsult } from "@/components/BookConsult";
 
 export default async function HomePage({
   params,
@@ -13,7 +15,6 @@ export default async function HomePage({
 
   return (
     <main className="min-h-screen bg-[var(--surface-0)] text-[var(--ink-900)]">
-      {/* Header */}
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
         <div className="flex items-center gap-3">
           <CompassMark size={40} />
@@ -30,7 +31,6 @@ export default async function HomePage({
         </nav>
       </header>
 
-      {/* Hero */}
       <section className="mx-auto max-w-6xl px-6 pb-16 pt-10 sm:pt-20">
         <p className="mb-4 text-sm font-medium uppercase tracking-wide text-[var(--compass-green-600)]">
           {t("hero.eyebrow")}
@@ -55,16 +55,12 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* How it works */}
       <section id="how" className="border-t border-[var(--line-200)] bg-[var(--compass-green-50)]">
         <div className="mx-auto max-w-6xl px-6 py-16">
           <h2 className="text-2xl font-semibold tracking-tight">{t("how.title")}</h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
             {([1, 2, 3] as const).map((n) => (
-              <div
-                key={n}
-                className="rounded-2xl border border-[var(--line-200)] bg-white p-6"
-              >
+              <div key={n} className="rounded-2xl border border-[var(--line-200)] bg-white p-6">
                 <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-[var(--compass-green-600)] font-semibold text-white">
                   {n}
                 </div>
@@ -76,7 +72,6 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Approach — coaching not clinical */}
       <section id="approach" className="mx-auto max-w-6xl px-6 py-16">
         <div className="rounded-2xl border border-[var(--line-200)] p-8">
           <span className="inline-flex items-center gap-2 rounded-full bg-[var(--compass-green-50)] px-3 py-1 text-sm font-medium text-[var(--compass-green-700)]">
@@ -87,23 +82,23 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Consult anchor (Phase 1: Cal.com booking embeds here) */}
-      <section id="consult" className="mx-auto max-w-6xl px-6 pb-20">
-        <div className="rounded-2xl bg-[var(--compass-green-700)] p-10 text-white">
-          <h2 className="text-2xl font-semibold tracking-tight">{t("common.bookConsult")}</h2>
-          <p className="mt-2 max-w-xl text-[var(--compass-green-200)]">{t("hero.subtitle")}</p>
-          <button
-            type="button"
-            className="mt-6 cursor-not-allowed rounded-full bg-[var(--wayfinding-amber)] px-6 py-3 font-medium text-[var(--ink-900)] opacity-90"
-            disabled
-            aria-disabled
-          >
-            {t("common.bookConsult")} →
-          </button>
+      <section id="consult" className="border-t border-[var(--line-200)] bg-[var(--compass-green-50)]">
+        <div className="mx-auto max-w-6xl px-6 py-16">
+          <div className="grid gap-10 lg:grid-cols-2">
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight">{t("consult.title")}</h2>
+              <p className="mt-2 max-w-md text-[var(--ink-500)]">{t("consult.subtitle")}</p>
+              <div className="mt-6">
+                <LeadForm locale={locale} />
+              </div>
+            </div>
+            <div className="rounded-2xl border border-[var(--line-200)] bg-white p-2">
+              <BookConsult />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Footer + disclaimer */}
       <footer className="border-t border-[var(--line-200)]">
         <div className="mx-auto max-w-6xl px-6 py-10">
           <p className="max-w-3xl text-xs leading-relaxed text-[var(--ink-500)]">
