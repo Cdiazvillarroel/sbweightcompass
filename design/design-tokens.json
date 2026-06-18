@@ -1,0 +1,31 @@
+{
+  "$description": "SB My Weight Compass design tokens — source of truth shared by Figma (Compass Color variables) and code (src/app/globals.css).",
+  "color": {
+    "compass": {
+      "green-700": { "$value": "#0B3D33", "$type": "color" },
+      "green-600": { "$value": "#0EA672", "$type": "color" },
+      "green-500": { "$value": "#15B981", "$type": "color" },
+      "green-200": { "$value": "#A7E8CF", "$type": "color" },
+      "green-50":  { "$value": "#ECFBF4", "$type": "color" }
+    },
+    "accent":  { "wayfinding-amber": { "$value": "#E0A340", "$type": "color" } },
+    "ink":     { "900": { "$value": "#11201C", "$type": "color" }, "500": { "$value": "#5C6B66", "$type": "color" } },
+    "line":    { "200": { "$value": "#E3E8E6", "$type": "color" } },
+    "surface": { "0":   { "$value": "#FFFFFF", "$type": "color" } },
+    "status":  {
+      "green": { "$value": "#16A34A", "$type": "color" },
+      "amber": { "$value": "#D97706", "$type": "color" },
+      "red":   { "$value": "#DC2626", "$type": "color" }
+    }
+  },
+  "font": {
+    "family": { "sans": { "$value": "Inter", "$type": "fontFamily" } },
+    "scale": {
+      "display-h1": { "$value": "48px", "$type": "dimension" },
+      "heading-h2": { "$value": "30px", "$type": "dimension" },
+      "heading-h3": { "$value": "20px", "$type": "dimension" },
+      "body-base":  { "$value": "16px", "$type": "dimension" },
+      "body-small": { "$value": "13px", "$type": "dimension" }
+    }
+  }
+}
