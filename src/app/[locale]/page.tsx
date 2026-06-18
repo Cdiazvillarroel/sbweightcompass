@@ -1,7 +1,6 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { CompassMark } from "@/components/CompassMark";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
-import { LeadForm } from "@/components/LeadForm";
 import { BookConsult } from "@/components/BookConsult";
 
 export default async function HomePage({
@@ -83,18 +82,11 @@ export default async function HomePage({
       </section>
 
       <section id="consult" className="border-t border-[var(--line-200)] bg-[var(--compass-green-50)]">
-        <div className="mx-auto max-w-6xl px-6 py-16">
-          <div className="grid gap-10 lg:grid-cols-2">
-            <div>
-              <h2 className="text-2xl font-semibold tracking-tight">{t("consult.title")}</h2>
-              <p className="mt-2 max-w-md text-[var(--ink-500)]">{t("consult.subtitle")}</p>
-              <div className="mt-6">
-                <LeadForm locale={locale} />
-              </div>
-            </div>
-            <div className="rounded-2xl border border-[var(--line-200)] bg-white p-2">
-              <BookConsult />
-            </div>
+        <div className="mx-auto max-w-3xl px-6 py-16">
+          <h2 className="text-2xl font-semibold tracking-tight">{t("consult.title")}</h2>
+          <p className="mt-2 text-[var(--ink-500)]">{t("consult.subtitle")}</p>
+          <div className="mt-6 rounded-2xl border border-[var(--line-200)] bg-white p-2">
+            <BookConsult />
           </div>
         </div>
       </section>
