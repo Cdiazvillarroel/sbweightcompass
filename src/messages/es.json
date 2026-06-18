@@ -2,43 +2,93 @@
   "common": {
     "brand": "SB My Weight Compass",
     "tagline": "Encuentra tu norte en peso y estilo de vida",
-    "bookConsult": "Agenda tu consulta gratis",
+    "bookConsult": "Agenda gratis",
     "languageName": "Español",
     "switchTo": "English"
   },
-  "nav": { "how": "Cómo funciona", "approach": "Enfoque", "consult": "Consulta gratis" },
+  "nav": { "how": "Cómo funciona", "about": "Sobre mí", "services": "Qué hacemos", "faq": "Preguntas", "consult": "Agendar" },
   "hero": {
-    "eyebrow": "Coaching de peso y estilo de vida · Australia · EN/ES",
-    "title": "Acompañamiento constante hacia tu meta — no otra dieta extrema",
-    "subtitle": "Coaching personalizado para un cambio sostenible de peso y estilo de vida, en inglés o español. Empieza con una consulta inicial gratuita para ver si encajamos.",
-    "cta": "Agenda tu consulta gratis",
-    "secondary": "Cómo funciona"
+    "eyebrow": "Coaching de peso y estilo de vida · EN/ES · Australia",
+    "title": "Encuentra tu norte hacia un cambio sano y duradero",
+    "subtitle": "Coaching personalizado y sin juicios que se adapta a tu vida real — nutrición, movimiento y hábitos sostenibles, en inglés o español. Empieza con una consulta gratuita de 30 minutos.",
+    "ctaPrimary": "Agenda tu consulta gratis",
+    "ctaSecondary": "Cómo funciona",
+    "badge": "Consulta gratis de 30 min",
+    "trust1": "Bilingüe EN / ES",
+    "trust2": "No clínico y seguro",
+    "trust3": "Planes a tu medida"
+  },
+  "strip": {
+    "a": "Sostenible — no dietas extremas",
+    "b": "Coaching, no atención clínica",
+    "c": "Pensado para tu vida real",
+    "d": "Apoyo entre sesiones"
+  },
+  "services": {
+    "eyebrow": "Qué hacemos",
+    "title": "Un enfoque completo y sostenible",
+    "subtitle": "No una dieta genérica — un plan armado en torno a tus gustos, tu rutina y tus metas.",
+    "nutritionTitle": "Nutrición a tu medida",
+    "nutritionBody": "Un plan de alimentación flexible según tus gustos, presupuesto y rutina — sin reglas rígidas ni alimentos prohibidos.",
+    "movementTitle": "Movimiento que disfrutas",
+    "movementBody": "Actividad realista que da fuerza y energía, sin vivir en el gimnasio.",
+    "habitsTitle": "Hábitos y mentalidad",
+    "habitsBody": "Cambios pequeños y duraderos, y una relación más sana y tranquila con la comida.",
+    "supportTitle": "Apoyo en el camino",
+    "supportBody": "Seguimiento y guía entre sesiones, para que nunca te sientas estancado ni solo."
+  },
+  "about": {
+    "eyebrow": "Conoce a tu coach",
+    "name": "Sebastián Barrón",
+    "role": "Coach de peso y estilo de vida",
+    "body1": "Sebastián ayuda a las personas a alcanzar un peso y estilo de vida más sanos con coaching sostenible y personalizado — no dietas extremas ni soluciones rápidas.",
+    "body2": "Su enfoque es cálido, práctico y sin juicios, y trabaja en inglés y español para que te entiendan en el idioma en que piensas.",
+    "calloutTitle": "Coaching, no atención clínica",
+    "calloutBody": "Esto es coaching de estilo de vida y peso, no tratamiento médico. Si algo en tu salud requiere un médico, Sebastián te lo dirá y te ayudará a buscar la atención adecuada primero.",
+    "chip1": "Bilingüe EN / ES",
+    "chip2": "Radicado en Australia",
+    "chip3": "Métodos sostenibles",
+    "chip4": "Sin juicios"
   },
   "how": {
+    "eyebrow": "Primeros pasos",
     "title": "Cómo funciona",
+    "subtitle": "Tres pasos simples — el primero es gratis.",
     "step1Title": "Consulta inicial gratuita",
-    "step1Body": "Una llamada relajada y sin presión para entender tus metas y responder tus dudas.",
+    "step1Body": "Una llamada relajada y sin presión de 30 minutos para entender tus metas y responder tus dudas.",
     "step2Title": "Onboarding e intake",
-    "step2Body": "Un cuestionario corto y seguro para construir tu plan en torno a tu vida real.",
+    "step2Body": "Un cuestionario corto y seguro para construir tu plan en torno a tu vida real y tu salud.",
     "step3Title": "Tu plan personalizado",
     "step3Body": "Nutrición, movimiento y hábitos — con seguimiento y apoyo en el camino."
+  },
+  "testimonials": {
+    "eyebrow": "En sus palabras",
+    "title": "Un cambio que de verdad dura",
+    "note": "Historias de ejemplo — se reemplazan por testimonios reales.",
+    "q1": "Por primera vez no estoy en una dieta que odio. Por fin encaja con mi vida, y el peso se mantiene.",
+    "n1": "María, Melbourne",
+    "q2": "Poder hacerlo en español cambió todo. Me sentí entendido desde el primer día.",
+    "n2": "Daniel, Sídney"
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "q1": "¿Es otra dieta más?",
+    "a1": "No. No hay alimentos prohibidos ni reglas rígidas — armamos un plan flexible y sostenible según tus gustos y tu rutina para que los cambios duren.",
+    "q2": "¿Podemos trabajar en español?",
+    "a2": "Sí. Sebastián hace coaching completo en inglés o español — el idioma con el que estés más cómodo.",
+    "q3": "¿Es atención médica o clínica?",
+    "a3": "No. Es coaching de estilo de vida y peso, no clínico. Si algo en tu salud requiere un médico, te lo diremos y te ayudaremos a buscar la atención adecuada primero.",
+    "q4": "¿Qué pasa en la consulta gratis?",
+    "a4": "Una llamada relajada de 30 minutos para entender tus metas, responder tus dudas y ver si encajamos — sin presión ni compromiso."
+  },
+  "consult": {
+    "eyebrow": "Consulta inicial gratuita",
+    "title": "¿Listo para encontrar tu norte?",
+    "subtitle": "Elige un horario que te acomode para una llamada gratuita y sin presión de 30 minutos."
   },
   "approach": {
     "title": "Coaching, no atención clínica",
     "body": "Esto es coaching de estilo de vida y peso, no tratamiento médico. Si algo en tu salud requiere un médico, te lo diremos y te ayudaremos a buscar la atención adecuada primero."
-  },
-  "consult": {
-    "title": "Agenda tu consulta inicial gratuita",
-    "subtitle": "Déjanos tus datos y elige un horario que te acomode. Sin presión ni compromiso.",
-    "bookDirect": "O elige un horario directamente",
-    "form": {
-      "name": "Tu nombre",
-      "email": "Correo",
-      "submit": "Solicitar mi consulta",
-      "submitting": "Enviando…",
-      "success": "¡Gracias! Recibimos tus datos — elige un horario en el calendario.",
-      "error": "Algo salió mal. Revisa tu correo e inténtalo de nuevo."
-    }
   },
   "disclaimer": {
     "text": "SB My Weight Compass ofrece coaching de estilo de vida y peso de carácter no clínico. No es consejo médico, diagnóstico ni tratamiento. Consulta siempre a tu médico (GP) o a un profesional de salud calificado sobre tu situación individual."

@@ -2,43 +2,93 @@
   "common": {
     "brand": "SB My Weight Compass",
     "tagline": "Find your true north in weight and lifestyle",
-    "bookConsult": "Book your free consult",
+    "bookConsult": "Book free consult",
     "languageName": "English",
     "switchTo": "Español"
   },
-  "nav": { "how": "How it works", "approach": "Approach", "consult": "Free consult" },
+  "nav": { "how": "How it works", "about": "About", "services": "What we do", "faq": "FAQ", "consult": "Book consult" },
   "hero": {
-    "eyebrow": "Weight & lifestyle coaching · Australia · EN/ES",
-    "title": "Steady guidance toward your goal — not another crash diet",
-    "subtitle": "Personalised coaching for sustainable weight and lifestyle change, in English or Spanish. Start with a free initial consult to see if we're a good fit.",
-    "cta": "Book your free consult",
-    "secondary": "How it works"
+    "eyebrow": "Weight & lifestyle coaching · EN/ES · Australia",
+    "title": "Find your true north to lasting, healthy change",
+    "subtitle": "Personalised, judgement-free coaching that fits your real life — sustainable nutrition, movement and habits, in English or Spanish. Start with a free 30-minute consult.",
+    "ctaPrimary": "Book your free consult",
+    "ctaSecondary": "How it works",
+    "badge": "Free 30-min consult",
+    "trust1": "Bilingual EN / ES",
+    "trust2": "Non-clinical & safe",
+    "trust3": "Plans built around you"
+  },
+  "strip": {
+    "a": "Sustainable — not crash diets",
+    "b": "Coaching, not clinical care",
+    "c": "Built around your real life",
+    "d": "Support between sessions"
+  },
+  "services": {
+    "eyebrow": "What we do",
+    "title": "A complete, sustainable approach",
+    "subtitle": "Not a one-size diet — a plan shaped around your tastes, routine and goals.",
+    "nutritionTitle": "Nutrition that fits you",
+    "nutritionBody": "A flexible eating plan around your tastes, budget and routine — no rigid rules or banned foods.",
+    "movementTitle": "Movement you enjoy",
+    "movementBody": "Realistic activity that builds strength and energy, without living at the gym.",
+    "habitsTitle": "Habits & mindset",
+    "habitsBody": "Small, lasting changes and a healthier, calmer relationship with food.",
+    "supportTitle": "Support along the way",
+    "supportBody": "Check-ins and guidance between sessions, so you never feel stuck or alone."
+  },
+  "about": {
+    "eyebrow": "Meet your coach",
+    "name": "Sebastián Barrón",
+    "role": "Weight & lifestyle coach",
+    "body1": "Sebastián helps people reach a healthier weight and lifestyle through sustainable, personalised coaching — not extreme diets or quick fixes.",
+    "body2": "His approach is warm, practical and judgement-free, and he works in both English and Spanish so you can be understood in the language you think in.",
+    "calloutTitle": "Coaching, not clinical care",
+    "calloutBody": "This is lifestyle and weight coaching, not medical treatment. If anything in your health needs a doctor, Sebastián will tell you and help you get the right care first.",
+    "chip1": "Bilingual EN / ES",
+    "chip2": "Australia-based",
+    "chip3": "Sustainable methods",
+    "chip4": "Judgement-free"
   },
   "how": {
+    "eyebrow": "Getting started",
     "title": "How it works",
+    "subtitle": "Three simple steps — the first one is free.",
     "step1Title": "Free initial consult",
-    "step1Body": "A relaxed, no-pressure call to understand your goals and answer your questions.",
+    "step1Body": "A relaxed, no-pressure 30-minute call to understand your goals and answer your questions.",
     "step2Title": "Onboarding & intake",
-    "step2Body": "A short, secure questionnaire so your plan is built around your real life.",
+    "step2Body": "A short, secure questionnaire so your plan is built around your real life and health.",
     "step3Title": "Your personalised plan",
     "step3Body": "Nutrition, movement and habits — with check-ins and support along the way."
+  },
+  "testimonials": {
+    "eyebrow": "In their words",
+    "title": "Change that actually lasts",
+    "note": "Sample stories — to be replaced with real client testimonials.",
+    "q1": "For the first time I'm not on a diet I dread. It finally fits my life, and the weight is staying off.",
+    "n1": "María, Melbourne",
+    "q2": "Being able to do it in Spanish made all the difference. I felt understood from day one.",
+    "n2": "Daniel, Sydney"
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "q1": "Is this just another diet?",
+    "a1": "No. There are no banned foods or rigid rules — we build a flexible, sustainable plan around your tastes and routine so the changes actually last.",
+    "q2": "Can we work in Spanish?",
+    "a2": "Yes. Sebastián coaches fully in English or Spanish — whichever you're most comfortable with.",
+    "q3": "Is this medical or clinical care?",
+    "a3": "No. This is non-clinical lifestyle and weight coaching. If anything in your health needs a doctor, we'll tell you and help you get the right care first.",
+    "q4": "What happens in the free consult?",
+    "a4": "A relaxed 30-minute call to understand your goals, answer your questions, and see if we're a good fit — no pressure or commitment."
+  },
+  "consult": {
+    "eyebrow": "Free initial consult",
+    "title": "Ready to find your true north?",
+    "subtitle": "Pick a time that suits you for a free, no-pressure 30-minute call."
   },
   "approach": {
     "title": "Coaching, not clinical care",
     "body": "This is lifestyle and weight coaching, not medical treatment. If anything in your health needs a doctor, we'll tell you and help you get the right care first."
-  },
-  "consult": {
-    "title": "Book your free initial consult",
-    "subtitle": "Leave your details and pick a time that suits you. No pressure, no commitment.",
-    "bookDirect": "Or pick a time directly",
-    "form": {
-      "name": "Your name",
-      "email": "Email",
-      "submit": "Request my consult",
-      "submitting": "Sending…",
-      "success": "Thanks! We've got your details — pick a time on the calendar.",
-      "error": "Something went wrong. Please check your email and try again."
-    }
   },
   "disclaimer": {
     "text": "SB My Weight Compass provides non-clinical lifestyle and weight coaching. It is not medical advice, diagnosis or treatment. Always consult your GP or a qualified health professional about your individual circumstances."
