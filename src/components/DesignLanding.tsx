@@ -5,9 +5,6 @@ import { getCalApi } from "@calcom/embed-react";
 import { LANDING_ES } from "@/landing/landing-es";
 import { LANDING_EN } from "@/landing/landing-en";
 
-// Renders the approved Claude Design landing (EN/ES) and mounts the Cal.com
-// inline booking widget into the #cal-inline slot. The `dc-landing` class scopes
-// the mobile-responsive overrides in globals.css.
 export function DesignLanding({ locale }: { locale: string }) {
   useEffect(() => {
     (async () => {
@@ -19,6 +16,13 @@ export function DesignLanding({ locale }: { locale: string }) {
         config: { layout: "month_view", theme: "light" },
       });
     })();
+
+    // Close the mobile menu after tapping a link
+    const toggle = document.getElementById("dc-nav-toggle") as HTMLInputElement | null;
+    const links = document.querySelectorAll<HTMLAnchorElement>(".dc-mobile-menu a");
+    const close = () => { if (toggle) toggle.checked = false; };
+    links.forEach((a) => a.addEventListener("click", close));
+    return () => links.forEach((a) => a.removeEventListener("click", close));
   }, []);
 
   const html = locale === "es" ? LANDING_ES : LANDING_EN;
