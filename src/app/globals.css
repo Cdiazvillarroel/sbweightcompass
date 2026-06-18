@@ -42,3 +42,8 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
+/* ---- Approved design landing helpers ---- */
+html { scroll-behavior: smooth; }
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .faq-chev { transform: rotate(180deg); }
