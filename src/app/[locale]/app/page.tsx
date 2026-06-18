@@ -33,7 +33,6 @@ export default async function AppHome({ params }: { params: Promise<{ locale: st
   const { data: subs } = await core.from("intake_submissions").select("id, status, profile").eq("client_id", client.id).order("created_at", { ascending: false }).limit(1);
   const sub = subs?.[0] as { id: string; status: string; profile: Record<string, unknown> | null } | undefined;
 
-  // ---- Onboarding not complete -> wizard ----
   if (sub?.status !== "submitted") {
     const { data: tmpls } = await core.from("intake_templates").select("id, tenant_id").eq("active", true).limit(1);
     const template = tmpls?.[0] as { id: string; tenant_id: string } | undefined;
@@ -49,7 +48,6 @@ export default async function AppHome({ params }: { params: Promise<{ locale: st
     );
   }
 
-  // ---- Onboarding complete -> the tracking app (SPA) ----
   const { data: defsRaw } = await core.from("metric_definitions").select("id, code");
   const defs = Object.fromEntries(((defsRaw ?? []) as { id: string; code: string }[]).map((d) => [d.code, d.id])) as Record<string, string>;
   const { data: entriesRaw } = await core.from("metric_entries").select("value, recorded_at, metric_def_id").eq("client_id", client.id).order("recorded_at", { ascending: true });
@@ -74,8 +72,19 @@ export default async function AppHome({ params }: { params: Promise<{ locale: st
   let streak = 0;
   for (let i = 0; ; i++) { const d = new Date(); d.setDate(d.getDate() - i); if (days.has(d.toISOString().slice(0, 10))) streak++; else break; }
 
-  const { data: apptRaw } = await core.from("appointments").select("title, starts_at").eq("client_id", client.id).gte("starts_at", new Date().toISOString()).order("starts_at", { ascending: true }).limit(1);
+  const nowIso = new Date().toISOString();
+  const { data: apptRaw } = await core.from("appointments").select("title, starts_at").eq("client_id", client.id).gte("starts_at", nowIso).order("starts_at", { ascending: true }).limit(1);
   const appt = apptRaw?.[0] as { title: string | null; starts_at: string } | undefined;
+
+  const { data: pastRaw } = await core.from("appointments").select("title, starts_at").eq("client_id", client.id).lt("starts_at", nowIso).order("starts_at", { ascending: false }).limit(5);
+  const history = ((pastRaw ?? []) as { title: string | null; starts_at: string }[]).map((a) => ({
+    title: a.title ?? "Session", date: new Date(a.starts_at).toLocaleDateString(locale, { day: "numeric", month: "short", year: "numeric" }),
+  }));
+
+  const { data: ciRaw } = await core.from("check_ins").select("week_of, adherence, energy").eq("client_id", client.id).order("week_of", { ascending: false }).limit(4);
+  const checkins = ((ciRaw ?? []) as { week_of: string; adherence: number | null; energy: number | null }[]).map((c) => ({
+    week: new Date(c.week_of + "T00:00:00").toLocaleDateString(locale, { day: "numeric", month: "short" }), adherence: c.adherence, energy: c.energy,
+  }));
 
   let membership: string | null = client.status;
   if (client.membership_id) {
@@ -93,7 +102,7 @@ export default async function AppHome({ params }: { params: Promise<{ locale: st
     email: client.email ?? user!.email ?? "",
     membership, goals, todayLabel, streak, goal, heightCm,
     weight: { current: wCurrent, delta },
-    series, defs,
+    series, defs, history, checkins,
     nextAppt: appt ? { whenLabel: new Date(appt.starts_at).toLocaleString(locale, { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) } : null,
   };
 

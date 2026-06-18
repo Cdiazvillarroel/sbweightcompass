@@ -14,6 +14,8 @@ export type AppData = {
   weight: { current: number | null; delta: number | null };
   series: Record<string, Pt[]>;
   defs: Record<string, string>;
+  history?: { title: string; date: string }[];
+  checkins?: { week: string; adherence: number | null; energy: number | null }[];
   nextAppt: { whenLabel: string } | null;
 };
 
@@ -205,7 +207,7 @@ function Inicio({ tl, data, go, openCheckin }: { tl: TL; data: AppData; go: (s: 
           </div>
           <div className="card" style={{ padding: 18, background: "linear-gradient(135deg,#0B3D33,#115C49)", border: "none" }}>
             <p style={{ margin: 0, fontSize: 12, fontWeight: 700, color: "#A7E8CF", textTransform: "uppercase", letterSpacing: ".06em" }}>{es ? "Próxima sesión" : "Next session"}</p>
-            {data.nextAppt ? <><p style={{ margin: "9px 0 2px", fontSize: 17, fontWeight: 700, color: "#fff" }}>{data.nextAppt.whenLabel}</p><p style={{ margin: 0, fontSize: 13.5, color: "#A7E8CF" }}>con Sebastián</p></> : <p style={{ margin: "9px 0 0", fontSize: 14, color: "#A7E8CF" }}>{es ? "Sin sesión agendada" : "No session booked"}</p>}
+            {data.nextAppt ? <><p style={{ margin: "9px 0 2px", fontSize: 17, fontWeight: 700, color: "#fff" }}>{data.nextAppt.whenLabel}</p><p style={{ margin: 0, fontSize: 13.5, color: "#A7E8CF" }}>{es ? "con Sebastián" : "with Sebastián"}</p></> : <p style={{ margin: "9px 0 0", fontSize: 14, color: "#A7E8CF" }}>{es ? "Sin sesión agendada" : "No session booked"}</p>}
           </div>
         </div>
       </div>
@@ -431,7 +433,7 @@ function Movimiento({ tl }: { tl: TL }) {
 
       {tab === "hoy" && (
         <>
-          <div className="card" style={{ padding: 18, marginBottom: 14 }}><p style={h3s}>{es ? "Pasos esta semana" : "Steps this week"}</p><Bars values={[7000, 9000, 8000, 11000, 6800, 12500, 8742]} labels={["L", "M", "X", "J", "V", "S", "D"]} /></div>
+          <div className="card" style={{ padding: 18, marginBottom: 14 }}><p style={h3s}>{es ? "Pasos esta semana" : "Steps this week"}</p><Bars values={[7000, 9000, 8000, 11000, 6800, 12500, 8742]} labels={es ? ["L", "M", "X", "J", "V", "S", "D"] : ["M", "T", "W", "T", "F", "S", "S"]} /></div>
           <div style={{ background: "#ECFBF4", border: "1px solid #A7E8CF", borderRadius: 14, padding: "12px 16px", marginBottom: 14, fontSize: 14, color: "#0B3D33" }}>🔥 <b>{es ? "Racha de 5 días entrenando." : "5-day training streak."}</b> {es ? "¡Sigue así!" : "Keep it up!"}</div>
           <div className="card" style={{ padding: 18, background: "linear-gradient(135deg,#0B3D33,#115C49)", border: "none", marginBottom: 12 }}><p style={{ margin: 0, fontSize: 11.5, fontWeight: 700, color: "#A7E8CF", textTransform: "uppercase", letterSpacing: ".06em" }}>{es ? "Hoy · Miércoles" : "Today · Wednesday"}</p><p style={{ margin: "6px 0 0", fontSize: 18, fontWeight: 800, color: "#fff" }}>{es ? "Tren superior — Empuje" : "Upper body — Push"}</p><p style={{ margin: "2px 0 0", fontSize: 13, color: "#A7E8CF" }}>{es ? "5 ejercicios · ~45 min" : "5 exercises · ~45 min"}</p></div>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>{ex.map((e, i) => <label key={i} className="check"><input type="checkbox" /><span className="box"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg></span><span style={{ flex: 1 }}><b className="lbl" style={{ color: "#0B3D33" }}>{e[0]}</b><span style={{ display: "block", fontSize: 12.5, color: "#93A09B", fontWeight: 500 }}>{e[1]}</span></span></label>)}</div>
@@ -470,9 +472,20 @@ function Coach({ tl, data }: { tl: TL; data: AppData }) {
             <div style={{ display: "flex", gap: 10, marginTop: 14 }}><button className="pill" style={{ flex: 1 }}>{es ? "Unirme" : "Join"}</button><a className="pill ghost" href="/#agenda" style={{ flex: 1, textAlign: "center" }}>{es ? "Reagendar" : "Reschedule"}</a></div>
           </div>
           <p style={h3s}>{es ? "Historial de sesiones" : "Session history"}</p>
-          {[[es ? "Sesión 6 · Ajuste de macros" : "Session 6 · Macro tweak", "6 jun 2026"], [es ? "Sesión 5 · Revisión de entreno" : "Session 5 · Training review", "23 may 2026"]].map((s, i) => (
-            <div key={i} className="card" style={{ padding: 14, display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}><span style={{ display: "flex", alignItems: "center", gap: 10 }}><span style={{ width: 8, height: 8, borderRadius: "50%", background: "#0EA672" }} /><b style={{ color: "#0B3D33", fontSize: 14 }}>{s[0]}</b><span style={{ color: "#93A09B", fontSize: 12.5 }}>{s[1]}</span></span><span style={{ color: "#0EA672", fontSize: 13, fontWeight: 700 }}>{es ? "Ver minuta" : "View note"}</span></div>
+          {(data.history && data.history.length ? data.history : []).map((s, i) => (
+            <div key={i} className="card" style={{ padding: 14, display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}><span style={{ display: "flex", alignItems: "center", gap: 10 }}><span style={{ width: 8, height: 8, borderRadius: "50%", background: "#0EA672" }} /><b style={{ color: "#0B3D33", fontSize: 14 }}>{s.title}</b><span style={{ color: "#93A09B", fontSize: 12.5 }}>{s.date}</span></span><span style={{ color: "#0EA672", fontSize: 13, fontWeight: 700 }}>{es ? "Ver minuta" : "View note"}</span></div>
           ))}
+          {data.checkins && data.checkins.length > 0 && (
+            <div className="card" style={{ padding: 18, marginTop: 6 }}>
+              <p style={h3s}>{es ? "Check-ins recientes" : "Recent check-ins"}</p>
+              {data.checkins.map((c, i) => (
+                <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "9px 0", borderBottom: i < (data.checkins!.length - 1) ? "1px solid #F0F4F2" : "none" }}>
+                  <span style={{ color: "#5C6B66", fontSize: 13.5 }}>{c.week}</span>
+                  <span style={{ display: "flex", gap: 8 }}><span className="chip">{(es ? "Adherencia " : "Adherence ") + (c.adherence ?? "—") + "/5"}</span><span className="chip" style={{ background: "#FFF7EC", borderColor: "#F3D9A8", color: "#8A5A12" }}>{(es ? "Energía " : "Energy ") + (c.energy ?? "—") + "/5"}</span></span>
+                </div>
+              ))}
+            </div>
+          )}
         </>
       )}
 
