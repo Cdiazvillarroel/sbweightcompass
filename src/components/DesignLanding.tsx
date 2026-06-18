@@ -3,10 +3,11 @@
 import { useEffect } from "react";
 import { getCalApi } from "@calcom/embed-react";
 import { LANDING_ES } from "@/landing/landing-es";
+import { LANDING_EN } from "@/landing/landing-en";
 
-// Renders the approved Claude Design landing and mounts the Cal.com inline
-// booking widget into the #cal-inline slot inside the "agenda" section.
-export function DesignLanding() {
+// Renders the approved Claude Design landing (EN/ES) and mounts the Cal.com
+// inline booking widget into the #cal-inline slot in the booking section.
+export function DesignLanding({ locale }: { locale: string }) {
   useEffect(() => {
     (async () => {
       const cal = await getCalApi();
@@ -19,5 +20,6 @@ export function DesignLanding() {
     })();
   }, []);
 
-  return <div dangerouslySetInnerHTML={{ __html: LANDING_ES }} />;
+  const html = locale === "es" ? LANDING_ES : LANDING_EN;
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
 }
