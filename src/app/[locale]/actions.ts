@@ -17,15 +17,22 @@ export async function submitLead(
     return { ok: false, error: "invalid_email" };
   }
 
-  const supabase = await createClient();
-  const { error } = await supabase.rpc("capture_lead", {
-    p_tenant: SB_TENANT_ID,
-    p_full_name: fullName,
-    p_email: email,
-    p_locale: locale,
-    p_source: "website",
-  });
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    return { ok: false, error: "missing_supabase_env" };
+  }
 
-  if (error) return { ok: false, error: error.message };
-  return { ok: true };
+  try {
+    const supabase = await createClient();
+    const { error } = await supabase.rpc("capture_lead", {
+      p_tenant: SB_TENANT_ID,
+      p_full_name: fullName,
+      p_email: email,
+      p_locale: locale,
+      p_source: "website",
+    });
+    if (error) return { ok: false, error: error.message };
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : "unknown_error" };
+  }
 }
