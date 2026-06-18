@@ -10,13 +10,6 @@ const T = {
 };
 type Opt = { v: string; en: string; es: string };
 
-function bmiCat(b: number, es: boolean): string {
-  if (b < 18.5) return es ? "Bajo peso" : "Underweight";
-  if (b < 25) return es ? "Saludable" : "Healthy";
-  if (b < 30) return es ? "Sobrepeso" : "Overweight";
-  return es ? "Obesidad" : "Obesity";
-}
-
 export default async function AppHome({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const es = locale === "es";
@@ -61,11 +54,13 @@ export default async function AppHome({ params }: { params: Promise<{ locale: st
   const defs = Object.fromEntries(((defsRaw ?? []) as { id: string; code: string }[]).map((d) => [d.code, d.id])) as Record<string, string>;
   const { data: entriesRaw } = await core.from("metric_entries").select("value, recorded_at, metric_def_id").eq("client_id", client.id).order("recorded_at", { ascending: true });
   const entries = (entriesRaw ?? []) as { value: number; recorded_at: string; metric_def_id: string }[];
-  const byCode = (code: string) => entries.filter((e) => e.metric_def_id === defs[code]);
-  const lastOf = (code: string) => { const a = byCode(code); return a.length ? Number(a[a.length - 1].value) : null; };
 
-  const wEntries = byCode("weight");
-  const wpts = wEntries.map((e) => ({ t: Date.parse(e.recorded_at), v: Number(e.value) }));
+  const series: Record<string, { t: number; v: number }[]> = {};
+  for (const code of ["weight", "waist", "hip", "body_fat", "water", "sleep", "mood"]) {
+    const id = defs[code];
+    series[code] = entries.filter((e) => e.metric_def_id === id).map((e) => ({ t: Date.parse(e.recorded_at), v: Number(e.value) }));
+  }
+  const wpts = series.weight ?? [];
   const wCurrent = wpts.length ? wpts[wpts.length - 1].v : null;
   const wFirst = wpts.length ? wpts[0].v : null;
   const delta = wCurrent !== null && wFirst !== null ? Math.round((wCurrent - wFirst) * 10) / 10 : null;
@@ -73,16 +68,11 @@ export default async function AppHome({ params }: { params: Promise<{ locale: st
   const profile = (sub?.profile ?? {}) as Record<string, unknown>;
   const goal = Number(profile.goalWeight) || null;
   const heightCm = Number(profile.height) || null;
-  const bmi = wCurrent && heightCm ? Math.round((wCurrent / Math.pow(heightCm / 100, 2)) * 10) / 10 : null;
   const goals = Array.isArray(profile.goals) ? (profile.goals as string[]) : [];
 
   const days = new Set(entries.map((e) => e.recorded_at.slice(0, 10)));
   let streak = 0;
-  for (let i = 0; ; i++) {
-    const d = new Date(); d.setDate(d.getDate() - i);
-    if (days.has(d.toISOString().slice(0, 10))) streak++;
-    else break;
-  }
+  for (let i = 0; ; i++) { const d = new Date(); d.setDate(d.getDate() - i); if (days.has(d.toISOString().slice(0, 10))) streak++; else break; }
 
   const { data: apptRaw } = await core.from("appointments").select("title, starts_at").eq("client_id", client.id).gte("starts_at", new Date().toISOString()).order("starts_at", { ascending: true }).limit(1);
   const appt = apptRaw?.[0] as { title: string | null; starts_at: string } | undefined;
@@ -93,17 +83,17 @@ export default async function AppHome({ params }: { params: Promise<{ locale: st
     membership = (mem as { status: string } | null)?.status ?? client.status;
   }
 
+  const fullName = client.display_name ?? (es ? "Cliente" : "Client");
+  const initials = fullName.split(" ").map((p) => p[0]).slice(0, 2).join("").toUpperCase();
   const todayLabel = (es ? "Hoy · " : "Today · ") + new Date().toLocaleDateString(locale, { weekday: "long" });
 
   const data: AppData = {
     tenantId: client.tenant_id, clientId: client.id,
-    name: client.display_name?.split(" ")[0] ?? (es ? "ahí" : "there"),
+    name: fullName.split(" ")[0], fullName, initials,
     email: client.email ?? user!.email ?? "",
-    membership, goals, todayLabel, streak,
-    weight: { current: wCurrent, delta, goal, bmi, bmiCat: bmi ? bmiCat(bmi, es) : "", pts: wpts },
-    anthro: { waist: lastOf("waist"), hip: lastOf("hip"), bodyFat: lastOf("body_fat") },
-    habits: { water: lastOf("water"), sleep: lastOf("sleep"), mood: lastOf("mood") },
-    defs,
+    membership, goals, todayLabel, streak, goal, heightCm,
+    weight: { current: wCurrent, delta },
+    series, defs,
     nextAppt: appt ? { whenLabel: new Date(appt.starts_at).toLocaleString(locale, { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) } : null,
   };
 
