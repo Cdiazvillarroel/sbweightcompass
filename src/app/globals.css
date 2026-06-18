@@ -95,3 +95,25 @@ details[open] .faq-chev { transform: rotate(180deg); }
     border: none;
   }
 }
+/* ---- Onboarding wizard (design-matched) ---- */
+.onb-wizard .opt { display:flex; align-items:center; gap:13px; padding:14px 17px; border:1px solid #E3E8E6; border-radius:14px; cursor:pointer; background:#fff; font-size:15.5px; font-weight:600; color:#11201C; transition:border-color .15s, background .15s; }
+.onb-wizard .opt:hover { border-color:#A7E8CF; background:#F6FCFA; }
+.onb-wizard .opt input { position:absolute; opacity:0; width:0; height:0; }
+.onb-wizard .opt .dot { flex:none; width:22px; height:22px; border-radius:50%; border:2px solid #CBD6D2; display:flex; align-items:center; justify-content:center; transition:all .15s; }
+.onb-wizard .opt.sq .dot { border-radius:7px; }
+.onb-wizard .opt .dot svg { opacity:0; transition:opacity .12s; }
+.onb-wizard .opt:has(input:checked) { border-color:#0EA672; background:#ECFBF4; }
+.onb-wizard .opt:has(input:checked) .dot { background:#0EA672; border-color:#0EA672; }
+.onb-wizard .opt:has(input:checked) .dot svg { opacity:1; }
+.onb-wizard input[type=range] { -webkit-appearance:none; appearance:none; width:100%; height:6px; border-radius:999px; background:#E3E8E6; outline:none; }
+.onb-wizard input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; appearance:none; width:24px; height:24px; border-radius:50%; background:#0EA672; border:4px solid #fff; box-shadow:0 2px 8px rgba(11,61,51,0.3); cursor:pointer; }
+.onb-wizard input[type=range]::-moz-range-thumb { width:20px; height:20px; border-radius:50%; background:#0EA672; border:4px solid #fff; box-shadow:0 2px 8px rgba(11,61,51,0.3); cursor:pointer; }
+.onb-wizard input[type=email]:focus, .onb-wizard input[type=tel]:focus, .onb-wizard input[type=text]:focus, .onb-wizard textarea:focus { border-color:#0EA672 !important; box-shadow:0 0 0 3px rgba(14,166,114,0.15); }
+@keyframes onbPopIn { 0%{transform:scale(.6);opacity:0;} 60%{transform:scale(1.08);} 100%{transform:scale(1);opacity:1;} }
+.onb-wizard .onb-step { animation: onbFade .3s ease both; }
+@keyframes onbFade { from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
+@media (max-width:560px){
+  .onb-wizard .onb-card-pad { padding-left:22px !important; padding-right:22px !important; }
+  .onb-wizard .onb-foot-pad { padding-left:22px !important; padding-right:22px !important; }
+  .onb-wizard .onb-grid-3 { grid-template-columns:1fr 1fr !important; }
+}
