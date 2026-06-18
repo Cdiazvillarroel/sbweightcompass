@@ -47,3 +47,18 @@ html { scroll-behavior: smooth; }
 details > summary { list-style: none; cursor: pointer; }
 details > summary::-webkit-details-marker { display: none; }
 details[open] .faq-chev { transform: rotate(180deg); }
+/* ---- Mobile responsiveness for the inline-styled Claude Design landing ---- */
+@media (max-width: 820px) {
+  .dc-landing header nav { display: none !important; }
+  .dc-landing header > div { flex-wrap: wrap !important; gap: 10px !important; }
+  .dc-landing [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+  .dc-landing section > div {
+    padding-top: 52px !important;
+    padding-bottom: 52px !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+  .dc-landing h1 { font-size: 32px !important; line-height: 1.14 !important; }
+  .dc-landing h2 { font-size: 25px !important; line-height: 1.18 !important; }
+  .dc-landing h3 { font-size: 18px !important; }
+}

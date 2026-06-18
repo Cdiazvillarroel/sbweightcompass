@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   title: "SB My Weight Compass — Coaching de peso y estilo de vida",
   description:
     "Coaching de peso y estilo de vida no clínico, bilingüe EN/ES. Agenda una consulta inicial gratuita.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export function generateStaticParams() {

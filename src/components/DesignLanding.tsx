@@ -6,7 +6,8 @@ import { LANDING_ES } from "@/landing/landing-es";
 import { LANDING_EN } from "@/landing/landing-en";
 
 // Renders the approved Claude Design landing (EN/ES) and mounts the Cal.com
-// inline booking widget into the #cal-inline slot in the booking section.
+// inline booking widget into the #cal-inline slot. The `dc-landing` class scopes
+// the mobile-responsive overrides in globals.css.
 export function DesignLanding({ locale }: { locale: string }) {
   useEffect(() => {
     (async () => {
@@ -21,5 +22,5 @@ export function DesignLanding({ locale }: { locale: string }) {
   }, []);
 
   const html = locale === "es" ? LANDING_ES : LANDING_EN;
-  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+  return <div className="dc-landing" dangerouslySetInnerHTML={{ __html: html }} />;
 }
