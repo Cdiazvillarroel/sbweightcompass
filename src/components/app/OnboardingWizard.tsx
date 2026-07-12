@@ -201,12 +201,8 @@ const Check = ({ s = "#fff", w = 3.5 }: { s?: string; w?: number }) => (
   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={s} strokeWidth={w} strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
 );
 const Compass = ({ size = 30 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden="true">
-    <circle cx="32" cy="32" r="27" fill="none" stroke={G} strokeWidth="3.5" />
-    <polygon points="32,7 25,39 32,33.5 39,39" fill="#E0A340" />
-    <polygon points="32,57 25,25 32,30.5 39,25" fill={INK} />
-    <circle cx="32" cy="32" r="2.8" fill="#FFFFFF" stroke={INK} strokeWidth="1.4" />
-  </svg>
+  // eslint-disable-next-line @next/next/no-img-element
+  <img src="/logo.svg" width={size} height={size} alt="SB My Weight Compass" />
 );
 const Arrow = () => (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>);
 const ArrowL = () => (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M11 18l-6-6 6-6" /></svg>);

@@ -101,8 +101,9 @@ function Icon({ name }: { name: Seg }) {
   };
   return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{p[name]}</svg>;
 }
-const Compass = ({ s = 30, dark = false }: { s?: number; dark?: boolean }) => (
-  <svg width={s} height={s} viewBox="0 0 64 64" aria-hidden><circle cx="32" cy="32" r="27" fill="none" stroke="#0EA672" strokeWidth="3.5" /><polygon points="32,7 25,39 32,33.5 39,39" fill="#E0A340" /><polygon points="32,57 25,25 32,30.5 39,25" fill={dark ? "#A7E8CF" : "#0B3D33"} /></svg>
+const Compass = ({ s = 30 }: { s?: number; dark?: boolean }) => (
+  // eslint-disable-next-line @next/next/no-img-element
+  <img src="/logo.svg" width={s} height={s} alt="SB My Weight Compass" />
 );
 
 export function ClientApp({ locale, data }: { locale: string; data: AppData }) {
